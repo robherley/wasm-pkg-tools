@@ -678,6 +678,7 @@ impl DependencyResolutionMap {
     /// generate a [`Resolve`] for the root package.
     pub async fn generate_resolve(&self, dir: impl AsRef<Path>) -> Result<(Resolve, PackageId)> {
         let mut merged = Resolve::default();
+        merged.all_features = true;
 
         let deps = self.decode_dependencies().await?;
 
